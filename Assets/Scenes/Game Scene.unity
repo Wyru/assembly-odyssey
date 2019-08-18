@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.34949547, g: 0.5235046, b: 0.778355, a: 1}
+  m_IndirectSpecularColor: {r: 0.34949493, g: 0.52350223, b: 0.7783469, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -615,6 +615,7 @@ MonoBehaviour:
   - {fileID: 1120596724}
   - {fileID: 1857356721}
   puzzles:
+  - {fileID: 1139634691062442441, guid: 1259e7995f13fc24b85c8ed1458327ab, type: 3}
   - {fileID: 782503779495753523, guid: 88199e11a6a4c174d88b68ae3abecdef, type: 3}
   sockets: []
 --- !u!1 &653260035
