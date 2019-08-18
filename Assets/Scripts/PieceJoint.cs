@@ -25,6 +25,7 @@ public class PieceJoint : MonoBehaviour
                 }))
                 {
                     successParticles?.Play();
+                    LevelController.Instance.PlayJoinPieceSuccess();
                     joinSuccess = true;
                     currentJoint.transform.parent.SetParent(transform.parent);
                     currentJoint.GetComponentInParent<PieceBehavior>().parent = GetComponentInParent<PieceBehavior>();

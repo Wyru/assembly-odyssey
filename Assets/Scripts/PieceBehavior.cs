@@ -52,9 +52,7 @@ public class PieceBehavior : MonoBehaviour
             verticalMove = Input.GetAxis("Mouse Y");
             horizontalMove = Input.GetAxis("Mouse X");
             deepMove = Input.GetAxis("Vertical");
-            
             movement = new Vector3(horizontalMove, verticalMove, deepMove) * Time.deltaTime ;
-            
         }
     }
 

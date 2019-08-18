@@ -2,19 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using NaughtyAttributes;
 
 public class LevelController : MonoBehaviour
 {
+    public static LevelController Instance;
+
     public Transform piecesContainer;
     public List<Transform> spawnPoints;
     public List<GameObject> puzzles;
-    public List<PieceJoint> sockets;
+    [HideInInspector] public List<PieceJoint> sockets;
     int currentPuzzle;
     bool settingPuzzle;
     bool gameIsEnd;
 
+    public AudioSource audioSource;
+    [BoxGroup("Sounds config")] public AudioClip pieceJoinSuccess;
+    [BoxGroup("Sounds config")] public AudioClip puzzleClear;
+    [BoxGroup("Sounds config")] public AudioClip pieceSpawn;
+
     private void Start()
     {
+        Instance = this;
         settingPuzzle = true;
         currentPuzzle = 0;
         gameIsEnd = false;
@@ -23,7 +32,6 @@ public class LevelController : MonoBehaviour
 
     private void Update()
     {
-
         if (gameIsEnd)
             return;
 
@@ -67,6 +75,7 @@ public class LevelController : MonoBehaviour
                 Vector3 position = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
                 Quaternion rotation = new Quaternion(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
                 Instantiate(pb[i], position, Quaternion.identity, piecesContainer);
+                PlaySpawnPiece();
                 yield return new WaitForSeconds(.1f);
             }
 
@@ -79,6 +88,20 @@ public class LevelController : MonoBehaviour
 
             settingPuzzle = false;
         }
+    }
 
+    public void PlayPuzzleSuccess(){
+        if(puzzleClear!=null)
+        audioSource.PlayOneShot(puzzleClear);
+    }
+
+    public void PlayJoinPieceSuccess(){
+        if(pieceJoinSuccess!=null)
+        audioSource.PlayOneShot(pieceJoinSuccess);
+    }
+
+    public void PlaySpawnPiece(){
+        if(pieceSpawn!=null)
+        audioSource.PlayOneShot(pieceSpawn);
     }
 }
